@@ -19,6 +19,11 @@ public class Contact {
 
     public Contact(String name, String phoneNumber){
         this.name = name;
+        if(phoneNumber.length() == 10){
+            phoneNumber = "(" + phoneNumber.substring(0,3) + ") " + phoneNumber.substring(3,6) + " - " + phoneNumber.substring(6);
+        } else if (phoneNumber.length() == 7){
+            phoneNumber = phoneNumber.substring(0,3) + " - " + phoneNumber.substring(3);
+        }
         this.phoneNumber = phoneNumber;
     }
 

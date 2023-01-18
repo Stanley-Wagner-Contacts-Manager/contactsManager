@@ -1,2 +1,5 @@
 |john smith          |123123              |
 |john snow           |1231241             |
+|john thomas         |1234567899          |
+|mark jackson        |(123) 456 - 7899    |
+|tom thumb           |867 - 5309          |
