@@ -1,4 +1,2 @@
 |john smith          |123123              |
-|john snow           |123123123           |
-John > john
-johnsmith, johnsnow
+|john snow           |1231241             |

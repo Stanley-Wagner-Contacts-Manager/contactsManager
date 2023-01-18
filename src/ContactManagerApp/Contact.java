@@ -7,10 +7,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
-
-import static java.lang.Integer.compare;
-import static java.lang.Integer.parseInt;
 
 public class Contact {
 
@@ -90,27 +86,34 @@ public class Contact {
         }
     }
 
-    public static void deleteContact(String name) throws IOException{
+    public static void deleteContact(String name) throws IOException {
         List<String> contactList = Files.readAllLines(mainFile);
-
-        boolean contactFound = false;
+        boolean contactMatch = false;
         int contactIndex = 0;
+        String possibleResults = "";
 
-        for (int i = 0; i < contactList.size(); i++){
-            if(contactList.get(i).contains(name)){
-                contactFound = true;
+        for (int i = 0; i < contactList.size(); i++) {
+            name = name.replaceAll("[^a-zA-Z]", "");
+            String compareName = contactList.get(i);
+            compareName = compareName.replaceAll("[^a-zA-Z]", "");
+            if (compareName.equals(name)) {
+                contactMatch = true;
                 contactIndex = i;
+            } else if (compareName.contains(name)) {
+                possibleResults = possibleResults + " " + compareName;
             }
         }
 
-        if (contactFound){
+        if (contactMatch) {
             contactList.remove(contactIndex);
             Files.write(
                     mainFile,
                     contactList
             );
+        } else if (possibleResults != "") {
+            System.out.println("We found multiple possible matches:" + possibleResults + "\nPlease try your delete again using the FULL NAME.\n");
         } else {
-            System.out.println("Contact not found");
+            System.out.println("Contact not found.\n");
         }
     }
 
