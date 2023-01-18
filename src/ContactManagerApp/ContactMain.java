@@ -43,6 +43,7 @@ public class ContactMain {
             String name = Input.getString();
             name = name.toLowerCase();
             Contact.deleteContact(name);
+            System.out.println("You deleted: " + name);
             Contact.showContacts();
             contactsApp();
         } else if (userInput.equals("exit") || userInput.equals("5")){
