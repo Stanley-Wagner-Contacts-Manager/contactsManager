@@ -58,6 +58,7 @@ public class Contact {
         }
     }
 
+    // For regex below found help here: https://stackoverflow.com/questions/11149759/remove-all-non-alphabetic-characters-from-a-string-array-in-java
     public static void searchContacts(String name) throws IOException{
         List<String> contactList = Files.readAllLines(mainFile);
 
