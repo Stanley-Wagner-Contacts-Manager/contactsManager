@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Contact {
@@ -40,6 +41,24 @@ public class Contact {
         );
     }
 
+    public static void showContacts() throws IOException {
+        List<String> contactList = Files.readAllLines(mainFile);
+
+        if(contactList.size() != 0){
+            System.out.println("\n___________________________________________");
+            System.out.println("|        NAME        |       NUMBER       |");
+            for (int i = 0; i <= contactList.size(); i +=1) {
+                if (i == contactList.size()){
+                    System.out.println("-------------------------------------------\n\n");
+                }
+                else {
+                    System.out.println("|--------------------|--------------------|");
+                    System.out.println(contactList.get(i));
+                }
+
+            }
+        }
+    }
 
 
 
