@@ -79,8 +79,28 @@ public class Contact {
         }
     }
 
-    public static void deleteContact() throws IOException{
+    public static void deleteContact(String name) throws IOException{
+        List<String> contactList = Files.readAllLines(mainFile);
 
+        boolean contactFound = false;
+        int contactIndex = 0;
+
+        for (int i = 0; i < contactList.size(); i++){
+            if(contactList.get(i).contains(name)){
+                contactFound = true;
+                contactIndex = i;
+            }
+        }
+
+        if (contactFound){
+            contactList.remove(contactIndex);
+            Files.write(
+                    mainFile,
+                    contactList
+            );
+        } else {
+            System.out.println("Contact not found");
+        }
     }
 
 }

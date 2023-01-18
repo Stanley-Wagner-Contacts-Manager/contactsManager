@@ -13,11 +13,11 @@ public class ContactMain {
     public static void contactsApp() throws IOException{
         System.out.println("Contacts List Manager 1.0\n");
         System.out.println("Please make a selection from the list below:");
-        System.out.println("Add: Add a new contact to the contact list");
-        System.out.println("All: Show all contacts currently in your contacts list");
-        System.out.println("Search: Search for a specific contact by name");
-        System.out.println("Delete: Delete a specific contact from your contacts list");
-        System.out.println("Exit: Exit the contacts list manager app\n");
+        System.out.println("1: Add: Add a new contact to the contact list");
+        System.out.println("2: All: Show all contacts currently in your contacts list");
+        System.out.println("3: Search: Search for a specific contact by name");
+        System.out.println("4: Delete: Delete a specific contact from your contacts list");
+        System.out.println("5: Exit: Exit the contacts list manager app\n");
 
         String userInput = Input.getString();
         userInput = userInput.toLowerCase();
@@ -29,13 +29,20 @@ public class ContactMain {
             Contact toAdd = new Contact(name, number);
             toAdd.AddContact();
             contactsApp();
-        } else if (userInput.equals("all")){
+        } else if (userInput.equals("all") || userInput.equals("2")){
             Contact.showContacts();
             contactsApp();
-        } else if (userInput.equals("search")){
+        } else if (userInput.equals("search") || userInput.equals("3")){
             System.out.println("Enter the name of the contact you wish to search for");
             String name = Input.getString();
             Contact.searchContacts(name);
+            contactsApp();
+        } else if (userInput.equals("delete") || userInput.equals("4")){
+            Contact.showContacts();
+            System.out.println("Enter the contact you wish to delete");
+            String name = Input.getString();
+            Contact.deleteContact(name);
+            Contact.showContacts();
             contactsApp();
         }
 
