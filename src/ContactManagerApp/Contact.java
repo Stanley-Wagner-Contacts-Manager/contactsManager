@@ -9,6 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.Integer.compare;
+import static java.lang.Integer.parseInt;
+
 public class Contact {
 
     private String name;
@@ -62,18 +65,26 @@ public class Contact {
     public static void searchContacts(String name) throws IOException{
         List<String> contactList = Files.readAllLines(mainFile);
 
-        boolean contactFound = false;
+        boolean contactMatch = false;
         int contactIndex = 0;
+        String possibleResults = "";
 
         for (int i = 0; i < contactList.size(); i++){
-            if(contactList.get(i).contains(name)){
-                contactFound = true;
+            name = name.replaceAll("[^a-zA-Z]", "");
+            String compareName = contactList.get(i);
+            compareName = compareName.replaceAll("[^a-zA-Z]", "");
+            if(compareName.equals(name)){
+                contactMatch = true;
                 contactIndex = i;
+            } else if(compareName.contains(name)){
+                possibleResults = possibleResults + " " + compareName;
             }
         }
 
-        if (contactFound){
+        if (contactMatch){
             System.out.println(contactList.get(contactIndex));
+        } else if(possibleResults != ""){
+            System.out.println("We found multiple possible matches:" + possibleResults + "\nPlease search again using the FULL NAME.\n");
         } else {
             System.out.println("Contact not found");
         }

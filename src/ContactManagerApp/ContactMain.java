@@ -33,16 +33,23 @@ public class ContactMain {
             Contact.showContacts();
             contactsApp();
         } else if (userInput.equals("search") || userInput.equals("3")){
-            System.out.println("Enter the name of the contact you wish to search for");
+            System.out.println("Enter the FULL NAME of the contact you wish to search for");
             String name = Input.getString();
+            name = name.toLowerCase();
             Contact.searchContacts(name);
             contactsApp();
         } else if (userInput.equals("delete") || userInput.equals("4")){
             Contact.showContacts();
-            System.out.println("Enter the contact you wish to delete");
+            System.out.println("Enter the FULL NAME contact you wish to delete");
             String name = Input.getString();
+            name = name.toLowerCase();
             Contact.deleteContact(name);
             Contact.showContacts();
+            contactsApp();
+        } else if (userInput.equals("exit") || userInput.equals("5")){
+            System.out.println("Thanks for using the Contacts List Manager");
+        } else {
+            System.out.println(userInput + " is not a valid input. Please try again.");
             contactsApp();
         }
 

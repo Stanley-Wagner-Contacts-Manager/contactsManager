@@ -1,5 +1,4 @@
-|paul                |45030290298         |
-|stanley             |3932837289          |
-|foghorn leghorn     |1231231234          |
-|john smith          |4924748292          |
-|paul smith          |1                   |
+|john smith          |123123              |
+|john snow           |123123123           |
+John > john
+johnsmith, johnsnow
