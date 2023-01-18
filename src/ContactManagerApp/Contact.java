@@ -55,13 +55,32 @@ public class Contact {
                     System.out.println("|--------------------|--------------------|");
                     System.out.println(contactList.get(i));
                 }
-
             }
         }
     }
 
+    public static void searchContacts(String name) throws IOException{
+        List<String> contactList = Files.readAllLines(mainFile);
 
+        boolean contactFound = false;
+        int contactIndex = 0;
 
+        for (int i = 0; i < contactList.size(); i++){
+            if(contactList.get(i).contains(name)){
+                contactFound = true;
+                contactIndex = i;
+            }
+        }
 
+        if (contactFound){
+            System.out.println(contactList.get(contactIndex));
+        } else {
+            System.out.println("Contact not found");
+        }
+    }
+
+    public static void deleteContact() throws IOException{
+
+    }
 
 }

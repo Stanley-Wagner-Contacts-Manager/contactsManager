@@ -32,6 +32,11 @@ public class ContactMain {
         } else if (userInput.equals("all")){
             Contact.showContacts();
             contactsApp();
+        } else if (userInput.equals("search")){
+            System.out.println("Enter the name of the contact you wish to search for");
+            String name = Input.getString();
+            Contact.searchContacts(name);
+            contactsApp();
         }
 
     }
